@@ -111,27 +111,27 @@ void setup()
    UART_1_init();
    UART_2_init();
 
- WiFi.onEvent(wifiConnected, WiFiEvent_t::SYSTEM_EVENT_STA_GOT_IP);
- WiFi.onEvent(wifiDisconnected, WiFiEvent_t::SYSTEM_EVENT_STA_DISCONNECTED);
+ //WiFi.onEvent(wifiConnected, WiFiEvent_t::SYSTEM_EVENT_STA_GOT_IP);
+ //WiFi.onEvent(wifiDisconnected, WiFiEvent_t::SYSTEM_EVENT_STA_DISCONNECTED);
 
 
-  WiFi.begin(WIFI_NETWORK,WIFI_PASSWORD);
+  // WiFi.begin(WIFI_NETWORK,WIFI_PASSWORD);
 
-   while(WiFi.status()!=WL_CONNECTED)
-  {
-   delay(500);
-   Serial.println("<<<Connecting to Wifi>>>");
-  }
-  Serial.println("Connected to the Wifi Network");
-  Serial.println(WiFi.localIP());
+  //  while(WiFi.status()!=WL_CONNECTED)
+  // {
+  //  delay(500);
+  //  Serial.println("<<<Connecting to Wifi>>>");
+  // }
+  // Serial.println("Connected to the Wifi Network");
+  // Serial.println(WiFi.localIP());
 
 
-     tcpClient.onData(&handleData, NULL);
-     tcpClient.onError(&handleError, NULL);
-     tcpClient.onTimeout(&handleTimeOut, NULL);
-     tcpClient.onDisconnect(&handleDisconnect, NULL);
+  //    tcpClient.onData(&handleData, NULL);
+  //    tcpClient.onError(&handleError, NULL);
+  //    tcpClient.onTimeout(&handleTimeOut, NULL);
+  //    tcpClient.onDisconnect(&handleDisconnect, NULL);
     
-     tcpClient.connect( serverIP , 100 );
+  //    tcpClient.connect( serverIP , 100 );
 
 
 }

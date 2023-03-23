@@ -7,7 +7,7 @@ uint8_t rxbuf[256];     //Buffer di ricezione
 uint16_t rx_fifo_len;        //Lunghezza dati
 uint8_t UART2_data[128];
 QueueHandle_t uart2_queue;
-
+uint8_t uart_f_2 = 0;
 void UART_2_init()
 {
 
@@ -65,7 +65,8 @@ void UART_2_init()
                 int UART2_data_length = 0;
                 ESP_ERROR_CHECK(uart_get_buffered_data_len(UART_NUM_2, (size_t*)&UART2_data_length));
                 UART2_data_length = uart_read_bytes(UART_NUM_2, UART2_data, UART2_data_length, 100);
-                 uart_write_bytes(UART_NUM_2, (const char*)UART2_data, UART2_data_length); 
+                uart_f_2 = 1;
+                 //uart_write_bytes(UART_NUM_2, (const char*)UART2_data, UART2_data_length); 
                 // Serial.println("LEN= ");Serial.println(UART2_data_length);
  
                 // Serial.print("DATA= ");

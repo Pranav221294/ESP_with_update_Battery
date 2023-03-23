@@ -6,8 +6,9 @@
 #include "Esp_UART_1.h"
 
 static intr_handle_t handle_console;
-uint8_t rxbuf_1[256];
+int8_t rxbuf_1[256];
 uint16_t urxlen;
+uint8_t uart_f_1 = 0;
 
 void IRAM_ATTR uart_intr_handle(void *arg)
 {
@@ -23,13 +24,14 @@ void IRAM_ATTR uart_intr_handle(void *arg)
  //uart_clear_intr_status(EX_UART_NUM, UART_RXFIFO_FULL_INT_CLR|UART_RXFIFO_TOUT_INT_CLR);//clear UART interrupt status
   UART1.int_clr.rxfifo_full = 1; //clear RX full interrupt
  UART1.int_clr.rxfifo_tout = 1; //clear RX timeout interrupt
- uart_write_bytes(EX_UART_NUM, (const char*)rxbuf_1, i);
+ uart_f_1 = 1;
+ //uart_write_bytes(EX_UART_NUM, (const char*)rxbuf_1, i);
 //  //Serial.println("LEN= ");Serial.println(UART2_data_length);
  
 //                 Serial.print("DATA= ");
 //                 for(byte j=0; j<i;j++) Serial.print((char)rxbuf_1[i]);
 //                 Serial.println("");
-  memset(rxbuf_1, '\0', i); 
+  //memset(rxbuf_1, '\0', i); 
 }
 
 void UART_1_init()
